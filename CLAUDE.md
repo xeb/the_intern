@@ -16,6 +16,6 @@ This project is my digital mountaintop home. It is a summary of my personal Inte
 - Personalized scripts. Expect to have a lot of personalized scripts.
 - Leverage CLAUDE.md for personalized instructions and authorization. 
 - GEMINI.md is a symlink to CLAUDE.md
-- Daily questions are used to "fill in memory over time" such as: "Where did you grow up?" These get stored in the 
+- Daily questions are used to "fill in memory over time" such as: "Where did you grow up?" These get stored in the memory files.
 - contacts.toml is used by the iMessage interface to manage user identification. And authorization is done by Claude via CLAUDE.md
 - [sink](https://github.com/xeb/sink) is used as the iMessage process and [BlueBubbles](https://bluebubbles.app/) is used on my Mac mini as the API
