@@ -33,15 +33,15 @@ The house is made of two repositories and one piece of connective tissue:
        iMessage (text / voice)               private web terminal
               │                                (own tmux, in a browser)
               ▼                                        │
-   ┌──────────────────────┐                           │
-   │ BlueBubbles (a Mac)  │   iMessage → local API    │
-   └──────────┬───────────┘                           │
+   ┌──────────────────────┐                            │
+   │ BlueBubbles (a Mac)  │   iMessage → local API     │
+   └──────────┬───────────┘                            │
               ▼                                        │
-   ┌──────────────────────┐                           │
-   │ sink (Rust daemon)   │   the front door          │
-   └──────────┬───────────┘                           │
+   ┌──────────────────────┐                            │
+   │ sink (Rust daemon)   │   the front door           │
+   └──────────┬───────────┘                            │
               │  inject + capture (tmux)               │
-              └───────────────┬───────────────────────┘
+              └───────────────┬────────────────────────┘
                               ▼
    ┌───────────────────────────────────────────────────┐
    │ tmux — the rooms                                  │
@@ -52,11 +52,11 @@ The house is made of two repositories and one piece of connective tissue:
                              ▼
    ┌───────────────────────────────────────────────────┐
    │ ~/p/master — the house                            │
-   │   CLAUDE.md · GEMINI.md    instructions + auth     │
-   │   contacts.toml            who may do what         │
-   │   projects/                the workrooms           │
-   │   memory/ · memory-claude/ what it remembers       │
-   │   tools/ · docs/           scripts + reference     │
+   │   CLAUDE.md · GEMINI.md    instructions + auth    │
+   │   contacts.toml            who may do what        │
+   │   projects/                the workrooms          │
+   │   memory/ · memory-claude/ what it remembers      │
+   │   tools/ · docs/           scripts + reference    │
    └───────────────────────────────────────────────────┘
 
    git underneath it all · backed up · local — except the inference
