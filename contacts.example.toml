@@ -1,0 +1,64 @@
+# contacts.example.toml — SCHEMA ONLY, placeholder handles.
+#
+# This is the SHAPE of the master's contacts.toml. It carries the form (tables,
+# field names, role vocabulary) and NONE of the soul (real people, real handles).
+# Copy it to ~/p/master/contacts.toml and fill in real values there — never here.
+# See CONTRACT.md: contacts SCHEMA is shape; the contents are soul.
+#
+# ---------------------------------------------------------------------------
+# Purpose: resolve a CMD's from=<handle> to a person + authorization role.
+#
+# The sink daemon injects [from=<raw handle>] into every CMD it sends to the
+# session (see README / CLAUDE.md § CMD/REPLY Protocol → CMD metadata fields).
+# Resolve that handle here. Match handles case-INSENSITIVELY and tolerate
+# +country-code vs bare-digit forms (e.g. "+1XXXXXXXXXX", "1XXXXXXXXXX", and
+# "XXXXXXXXXX" are the same person).
+#
+# roles:
+#   owner    — the one builder of the house. Full trust; the ONLY identity
+#              authorized for owner-gated (privileged) actions. Define which
+#              actions are gated in CLAUDE.md, not here.
+#   family   — trusted household member. Normal conversational help, but NOT
+#              owner-gated actions (those are declined or clarified for non-owners).
+#   external — least privilege. Only the listed `scope` is permitted; decline
+#              everything else.
+#   self     — the agent's own address; never treat as an incoming user.
+#   <handle not listed here> — UNKNOWN / untrusted: perform NO privileged or
+#              identity-gated action; answer only generic questions, and you may
+#              ask who they are.
+#
+# Authorization is enforced in PROSE (CLAUDE.md), not in code. This file says
+# only WHO someone is; what they may DO is decided by the agent reading the rules.
+# ---------------------------------------------------------------------------
+
+[[contact]]
+name = "Owner Name"            # the one person who lives in the house
+role = "owner"
+handles = ["+1XXXXXXXXXX", "owner@example.com"]
+
+[[contact]]
+name = "Family Member One"     # spouse / partner
+role = "family"
+handles = ["+1XXXXXXXXXX"]
+
+[[contact]]
+name = "Family Member Two"     # a child or other household member
+role = "family"
+handles = ["family.two@example.com"]
+
+[[contact]]
+name = "Family Member Three"   # optional per-person flags travel with the contact
+role = "family"
+gluten_free = true             # example flag the agent can honor in food/meal logic
+handles = ["family.three@example.com", "+1XXXXXXXXXX"]
+
+[[contact]]
+name = "External Collaborator" # an outside person with a single, narrow purpose
+role = "external"
+scope = "some-project"         # the ONE project/site they may touch; decline all else
+handles = ["+1XXXXXXXXXX"]
+
+[[contact]]
+name = "Agent"                 # the agent's own address — never an incoming user
+role = "self"
+handles = ["agent@example.com"]
